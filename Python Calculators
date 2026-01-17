@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Calculators</title>
+</head>
+
+<body>
+<p>
+#This is my calculator. You can use a temp calculator, a discount calculator, or a third calculator I have not made yet. 
+
+
+print("Welcome to my calculator! ")
+print()
+
+#This asks which calculator the user wants to use. 
+while True: 
+    Choice = input("Enter 1 for the Fahrenheit / Celsius conversion calculator or enter 2 for the discount calculator, then press enter to continue: ")
+    print()
+    print()
+    print()
+
+
+
+
+
+    #This part checks wether they entered in a number and lets them continue if they did. 
+    if Choice.isdecimal():
+
+
+        #This is the Fahrenheit/Celsius converaion calculator. 
+        if Choice == "1":
+            print("This is a Fahrenheit / Celsius conversion calculator. You can convert from C to F or from F to C. Press enter to continue. ", end="")
+            input()
+            print()
+
+            #This asks wether to convert C to F or F to C. 
+            Temperature_Choice = input("Press 1 to convert from F to C or press 2 to convert from C to F, then press enter to continue. ")
+            print()
+
+
+
+            #This is the Fahrenheit to Celsius calculator.
+            if Temperature_Choice == "1":
+                
+                print("Converting from F to C. ")
+                print()
+                print()
+                print()
+
+                while True:
+                    #First, we get the Fahrenheit. 
+                    Fahrenheit = int(input("Enter the Fahrenheit, then press enter to continue: ")) 
+                    print()
+
+                    #Now, we need to do the calculation. 
+                    Celsius = (Fahrenheit - 32) * 5/9 
+
+                    #Now, we print the answer. 
+                    print(f"{Fahrenheit}°F is equal to {round(Celsius,2)}°C. Press enter to do more calculations, or type \"Restart\" and then press enter to choose a different calculator. ", end="")
+                    Enter_1 = input()
+                    print()
+                    print()
+                    print()
+                    if Enter_1 == "Restart":
+                        Enter_1 = ""
+                        break
+                    elif Enter_1 == "restart":
+                        Enter_1 = ""
+                        break
+        
+        #This is the Celsius to Fahrenheit calculator. 
+            if Temperature_Choice == "2":
+                print("Converting from C to F. ")
+                print()
+                print()
+                print()
+                
+                while True:
+                    #The first thing we need to do is get the Celsius. 
+                    Celsius = int(input("Enter the Celsius, then press enter to continue: ")) 
+                    print()
+
+                    #Now, we need to do the calculation. 
+                    Fahrenheit = (Celsius * 9/5) + 32
+
+                    #Now, we print the answer. 
+                    print(f"{Celsius}°C is equal to {round(Fahrenheit,2)}°F. Press enter to do more calculations, or type \"Restart\" and then press enter to choose a different calculator. ", end="")
+                    Enter_1 = input()
+                    print()
+                    print()
+                    print()
+                    if Enter_1 == "Restart":
+                        Enter_1 = ""
+                        break
+                    elif Enter_1 == "restart":
+                        Enter_1 = ""
+                        break
+
+
+
+
+
+        #This is the discount calculator. 
+        if Choice == "2": 
+            Change_Currency = ""
+            Enter_1 = ""
+            print("This is a discount calculator. You can calculate in $, £, €, or ¥. Press enter to continue. ", end="")
+            input()
+            print()
+
+            while True:
+                #This part asks for the user's currency. 
+                Currency = input("Press 1 to calculate in $, 2 to calculate in £, 3 to calculate in €, or 4 to calculate in ¥, then press enter to continue. ")
+                print()
+
+                #This part sets the "Currency" variable to the right currency. 
+                if Currency == "1":
+                    Currency = "$"
+                elif Currency == "2":
+                    Currency = "£"
+                elif Currency == "3":
+                    Currency = "€"
+                elif Currency == "4":
+                    Currency = "¥"
+                else: 
+                    print("Invalid number! Choose again. ")
+                    print()
+                    break
+
+                #This part tells the user which currency they chose and asks if they want to change it. 
+                while True:
+                    Change_Currency = input("Calculating in " + Currency + ". Press enter to continue, or to change the currency, type any character and then press enter. ")
+                    print()
+                    print()
+
+                    #This part checks wether the user wants to change the currency. 
+                    if Change_Currency == (""):
+
+                        #This part asks for the origional price.
+                        Original_Price = input("Enter the original price here: " + Currency)
+                        print()
+
+                        #This part asks for the discount percent or if the user wants to use a discount amount. 
+                        Discount_Percentage = input("Enter the discount percentage here, or type any letter to use a " + Currency + " amount for the discount instead of a percentage: %")
+                        print()
+
+                        #This part checks wether to use a discount percentage or to use a discount amount, and continues here if a discount percent is being used. 
+                        if Discount_Percentage.replace(".", "", 1).isdigit():
+
+                            #This part asks for the tax percentage. 
+                            Tax_Percentage = input("Enter the tax percentage here: %")
+                            print()
+
+                            #This part asks if there are any other fees. 
+                            Additional_Fees = input("Enter the " + Currency + " amount for any additional fees. If there are no additional fees, enter 0: " + Currency)
+                            print()
+
+                            #This turns all the variables into floats. 
+                            Discount_Percentage = float(Discount_Percentage)
+                            Original_Price = float(Original_Price)
+                            Tax_Percentage = float(Tax_Percentage)
+                            Additional_Fees = float(Additional_Fees)
+
+                            #This is the formula. 
+                            Final_Price = (Original_Price * (1 - Discount_Percentage/100) * (1 + Tax_Percentage/100)) + Additional_Fees
+
+                            #This part checks how much the user saved. 
+                            Amount_Saved = (Original_Price * (1+ Tax_Percentage/100)) + Additional_Fees - Final_Price
+
+                            #This prints the answer: 
+                            print(f"The total price is {Currency}{round(Final_Price, 2)}. You saved a total of {Currency}{round(Amount_Saved, 2)}. Press enter to do more calculations, or type \"Restart\" to choose a different calculator. ", end="")
+                            Enter_1 = input()
+                            print()
+                            print()
+                            print()
+                            if Enter_1 == "Restart":
+                                Enter_1 = ""
+                                break
+                            elif Enter_1 == "restart":
+                                Enter_1 = ""
+                                break
+
+                        #This part checks wether to use a discount percentage or to use a discount amount, and continues here if a discount amount is being used. 
+                        else:
+                            print()
+
+                            #This part asks for the discount amount. 
+                            Discount_Amount = input("Enter the " + Currency + " amount for the discount here: " + Currency)
+                            print()
+
+                            #This part asks for the tax percentage. 
+                            Tax_Percentage = input("Enter the tax percentage here: %")
+                            print() 
+
+                            #This part asks if there are any other fees. 
+                            Additional_Fees =  input("Enter the " + Currency + " amount for any additional fees. If there are no additional fees, enter 0: " + Currency)
+                            print()
+
+                            #This turns all the variables into floats. 
+                            Discount_Amount = float(Discount_Amount)
+                            Original_Price = float(Original_Price)
+                            Tax_Percentage = float(Tax_Percentage)
+                            Additional_Fees = float(Additional_Fees)
+
+                            #This is the formula/calculation. 
+                            Final_Price = (Original_Price - Discount_Amount) * (1+ Tax_Percentage/100) + Additional_Fees
+
+                            #This prints the answer: 
+                            print(f"The total price is {Currency}{round(Final_Price, 2)}. You saved a total of {Currency}{round(Discount_Amount, 2)}. Press enter to do more calculations, or type \"Restart\" to choose a different calculator. ", end="")
+                            Enter_1 = input()
+                            print()
+                            print()
+                            print()
+                            if Enter_1 == "Restart":
+                                Enter_1 = ""
+                                break
+                            elif Enter_1 == "restart":
+                                Enter_1 = ""
+                                break
+
+                    #This part checks wether the user wants to change the currency.
+                    else:
+                        print()
+                        break
+
+    #This part checks wether they entered in a number and tells them to choose again if they didn't. 
+    else: print("Invalid number! Choose again. ")
+</p>
+</body>
